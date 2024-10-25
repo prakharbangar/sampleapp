@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-analyticsample';
+import { StyleSheet, View, Text, Button } from 'react-native';
+import { multiply, add, initializeLibrary } from 'react-native-analyticsample';
 
 export default function App() {
   const [result, setResult] = useState<number | undefined>();
@@ -12,6 +12,13 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>Result: {result}</Text>
+      <Text>Result2: {add(1, 3)}</Text>
+      <Button
+        title="Multiply"
+        onPress={() => {
+          initializeLibrary();
+        }}
+      />
     </View>
   );
 }

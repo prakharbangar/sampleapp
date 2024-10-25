@@ -1,4 +1,5 @@
 import { NativeModules, Platform } from 'react-native';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 const LINKING_ERROR =
   `The package 'react-native-analyticsample' doesn't seem to be linked. Make sure: \n\n` +
@@ -26,4 +27,14 @@ const Analyticsample = AnalyticsampleModule
 
 export function multiply(a: number, b: number): Promise<number> {
   return Analyticsample.multiply(a, b);
+}
+
+export function add(a: number, b: number): number {
+  return a + b;
+}
+
+export function initializeLibrary() {
+  crashlytics().log('From library');
+  crashlytics().crash();
+  console.log('Library initialized with Firebase.');
 }
